@@ -28,7 +28,7 @@ const addBook = (request, response) => {
       if (error) {
         throw error
       }
-      response.status(201).json({ status: 'success', message: 'Book added.' })
+      response.status(201).json({ status: 'success', message: 'ok' })
     }
   )
 }
