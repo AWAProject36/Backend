@@ -5,7 +5,8 @@ CREATE TABLE users (
   address VARCHAR(255),
   email VARCHAR(45),
   password VARCHAR(255),
-  phone VARCHAR(255)
+  phone VARCHAR(255),
+  UNIQUE(email, phone)
 );
 
 CREATE TABLE products (
@@ -18,6 +19,7 @@ CREATE TABLE products (
 
 CREATE TABLE orders (
   idOrders SERIAL PRIMARY KEY NOT NULL,
+  order_date DATE NOT NULL DEFAULT CURRENT_DATE,
   state VARCHAR(255) NOT NULL,
   title VARCHAR(255) NOT NULL,
   idUsers INT NOT NULL,
