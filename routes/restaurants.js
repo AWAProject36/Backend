@@ -24,6 +24,17 @@ router.get('/:id?',
   }
 });
 
+router.get('/owner/:id', 
+function(request, response) {
+  restaurants.getByOwner(request.params.id, function(err, dbResult) {
+    if (err) {
+      response.json(err);
+    } else {
+      response.json(dbResult.rows);
+    }
+  });
+});
+
 router.post('/', 
 function(request, response) {
   restaurants.add(request.body, function(err, dbResult) {
