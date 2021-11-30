@@ -15,6 +15,8 @@ const restaurantsRouter = require('./routes/restaurants');
 const productsRouter = require('./routes/products');
 const loginRouter = require('./routes/login');
 const registerRouter = require('./routes/register');
+const uploadRouter = require('./routes/upload');
+
 
 var app = express()
 
@@ -37,6 +39,7 @@ app.use('/restaurants', restaurantsRouter);
 app.use('/products', productsRouter);
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
+app.use('/upload', uploadRouter);
 
 app.use(function(req, res, next) {
   next(createError(404));
