@@ -1,22 +1,24 @@
 const express = require('express');
-const cloudinary = require('cloudinary');
-const cloudinaryStorage = require('multer-storage-cloudinary');
+const cloudinary = require('cloudinary').v2;
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
 const multer = require('multer');
 const router = express.Router();
 
-var storage = cloudinaryStorage({
+const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
-    folder: '',
-    allowedFormats: ['jpg', 'png'],
+    params: {
+    folder: 'restImages',
+    allowedFormats: ['jpg', 'png']
+    }
   });
   
 var parser = multer({ storage: storage });
 
 router.post('/', parser.single('image'),
     function (request, response) {
-        console.log(req.file);
-        res.status(201);
-        res.json(req.file);
+        console.log(request.file);
+        response.status(201);
+        response.json(request.file);
     });
 
 module.exports = router;
