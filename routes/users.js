@@ -22,6 +22,16 @@ router.get('/:id?',
       }
     });
   }
+  router.put('/:id', 
+  function(request, response) {
+  users.updateRole(request.params.id, request.body, function(err, dbResult) {
+    if (err) {
+      response.json(err);
+    } else {
+      response.json(dbResult.rows);
+    }
+  });
+});
 });
 
 module.exports = router;
