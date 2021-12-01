@@ -17,7 +17,6 @@ var parser = multer({ storage: storage });
 router.post('/', parser.single('image'),
     function (request, response) {
         console.log(request.file);
-        response.status(201);
         response.json(request.file);
     });
 
