@@ -11,12 +11,14 @@ const { pool } = require('./config')
 const jwt = require('jsonwebtoken');
 
 const usersRouter = require('./routes/users');
+const categoriesRouter = require('./routes/categories');
 const restaurantsRouter = require('./routes/restaurants');
 const productsRouter = require('./routes/products');
+const menuRouter = require('./routes/menu');
 const loginRouter = require('./routes/login');
 const registerRouter = require('./routes/register');
 const uploadRouter = require('./routes/upload');
-
+const ordersRouter = require('./routes/orders');
 
 var app = express()
 
@@ -37,9 +39,12 @@ app.use(cors())
 app.use('/users', usersRouter);
 app.use('/restaurants', restaurantsRouter);
 app.use('/products', productsRouter);
+app.use('/menu', menuRouter);
+app.use('/categories', categoriesRouter);
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
 app.use('/upload', uploadRouter);
+app.use('/orders', ordersRouter);
 
 app.use(function(req, res, next) {
   next(createError(404));

@@ -7,11 +7,11 @@ const router = express.Router();
 const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {
-    folder: 'restImages',
-    allowedFormats: ['jpg', 'png']
+        folder: 'restImages',
+        allowedFormats: ['jpg', 'png']
     }
-  });
-  
+});
+
 var parser = multer({ storage: storage });
 
 router.post('/', parser.single('image'),
