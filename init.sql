@@ -34,7 +34,7 @@ CREATE TABLE orders (
 
 CREATE TABLE orders_products (
   idOrders INT NOT NULL,
-  idProducts INT NOT NULL,
+  idProducts INT NOT NULL
 );
 
 CREATE TABLE restaurants (
