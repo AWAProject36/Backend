@@ -11,7 +11,34 @@ router.get('/:id?',
                 if (err) {
                     response.json(err);
                 } else {
-                    response.json(dbResult.rows);
+                    let menu = [];
+                    let i = 0;
+                    while (dbResult.rows[i]) {
+                        if (menu.filter(e => e.category == dbResult.rows[i].category).length > 0) {
+                            let index = menu.findIndex((e => e.category == dbResult.rows[i].category));
+                            let productsTemp = {
+                                name: dbResult.rows[i].product,
+                                price: dbResult.rows[i].price,
+                                description: dbResult.rows[i].description,
+                                img: dbResult.rows[i].img
+                            }
+                            menu[index].products.push(productsTemp);
+                        }
+                        else {
+                            let productsTemp = [{
+                                name: dbResult.rows[i].product,
+                                price: dbResult.rows[i].price,
+                                description: dbResult.rows[i].description,
+                                img: dbResult.rows[i].img
+                            }]
+                            menu.push({
+                                category: dbResult.rows[i].category,
+                                products: productsTemp
+                            })
+                        }
+                        i++;
+                    }
+                    response.json(menu);
                 }
             });
         } else {
