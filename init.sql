@@ -19,7 +19,7 @@ CREATE TABLE products (
 );
 
 CREATE TABLE categories (
-  idCategories INT PRIMARY KEY NOT NULL,
+  idCategories SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR(45),
   idRestaurant INT NOT NULL
 );
@@ -35,7 +35,6 @@ CREATE TABLE orders (
 CREATE TABLE orders_products (
   idOrders INT NOT NULL,
   idProducts INT NOT NULL,
-  PRIMARY KEY (idOrders, idProducts)
 );
 
 CREATE TABLE restaurants (
