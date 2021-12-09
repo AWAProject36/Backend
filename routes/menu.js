@@ -17,6 +17,7 @@ router.get('/:id?',
                         if (menu.filter(e => e.category == dbResult.rows[i].category).length > 0) {
                             let index = menu.findIndex((e => e.category == dbResult.rows[i].category));
                             let productsTemp = {
+                                id: dbResult.rows[i].idproducts,
                                 name: dbResult.rows[i].product,
                                 price: dbResult.rows[i].price,
                                 description: dbResult.rows[i].description,
@@ -26,6 +27,7 @@ router.get('/:id?',
                         }
                         else {
                             let productsTemp = [{
+                                id: dbResult.rows[i].idproducts,
                                 name: dbResult.rows[i].product,
                                 price: dbResult.rows[i].price,
                                 description: dbResult.rows[i].description,
