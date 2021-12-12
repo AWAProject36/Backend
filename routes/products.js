@@ -31,7 +31,7 @@ router.post('/',
       if (err) {
         response.json(err);
       } else {
-        menu.add(request.body, dbResult.rows.idproducts, function (err, menuResult) {
+        menu.add(request.body, dbResult.rows[0].idproducts, function (err, menuResult) {
           if (err) {
               response.json(err);
           } else {
