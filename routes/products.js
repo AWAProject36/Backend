@@ -39,11 +39,11 @@ router.post('/',
 
 router.delete('/:id',
   function (request, response) {
-    products.delete(request.params.id, function (err, dbResult) {
+    products.deleteFromMenu(request.params.id, function (err, dbResult) {
       if (err) {
         response.json(err);
       } else {
-        products.deleteFromMenu(request.params.id, function (err, dbResult) {
+        products.delete(request.params.id, function (err, dbResult) {
           if (err) {
             response.json(err);
           } else {
