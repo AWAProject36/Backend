@@ -49,10 +49,10 @@ router.delete('/:id',
           } else {
             response.json(dbResult.rows);
           }
-      }
-    });
+      });
+    }
   });
-
+  });
 
 router.put('/:id',
   function (request, response) {
@@ -64,5 +64,5 @@ router.put('/:id',
       }
     });
   });
-
+  
 module.exports = router;
