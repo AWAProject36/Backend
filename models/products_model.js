@@ -9,7 +9,7 @@ const products = {
   },
   add: function (products, callback) {
     return pool.query(
-      'INSERT INTO products(name, description, price, img, idCategories) values($1, $2, $3, $4, $5)',
+      'INSERT INTO products(name, description, price, img, idCategories) values($1, $2, $3, $4, $5) RETURNING idproducts',
       [products.name, products.description, products.price, products.img, products.idcategories],
       callback
     );

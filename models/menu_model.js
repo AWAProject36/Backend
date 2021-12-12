@@ -7,10 +7,10 @@ const menu = {
   getByID: function (id, callback) {
     return pool.query('SELECT products.idproducts, categories.name as category, products.name as product, products.price, products.description, products.img FROM products INNER JOIN menu ON menu.idproducts = products.idproducts INNER JOIN categories ON categories.idcategories = products.idcategories WHERE menu.idrestaurant = $1;', [id], callback);
   },
-  add: function (menu, callback) {
+  add: function (menu, idproducts, callback) {
     return pool.query(
       'INSERT INTO menu values($1, $2)',
-      [menu.idrestaurants, menu.idproducts],
+      [menu.idrestaurants, idproducts],
       callback
     );
   },

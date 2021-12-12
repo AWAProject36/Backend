@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const products = require('../models/products_model');
+const menu = require('../models/menu_model');
 
 router.get('/:id?',
   function (request, response) {
@@ -30,8 +31,13 @@ router.post('/',
       if (err) {
         response.json(err);
       } else {
-        console.log(dbResult);
-        response.json(dbResult.rows);
+        menu.add(request.body, dbResult.rows.idproducts, function (err, menuResult) {
+          if (err) {
+              response.json(err);
+          } else {
+              response.json(menuResult.rows);
+          }
+      });
       }
     });
   });
