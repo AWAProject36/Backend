@@ -5,7 +5,7 @@ const categories = {
     return pool.query('SELECT * FROM categories', callback);
   },
   getByID: function (id, callback) {
-    return pool.query('SELECT * FROM categories WHERE idrestaurants = $1', [id], callback);
+    return pool.query('SELECT * FROM categories WHERE idrestaurant = $1', [id], callback);
   },
   add: function (categories, callback) {
     return pool.query(
