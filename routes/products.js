@@ -43,7 +43,12 @@ router.delete('/:id',
       if (err) {
         response.json(err);
       } else {
-        response.json(dbResult.rows);
+        products.deleteFromMenu(request.params.id, function (err, dbResult) {
+          if (err) {
+            response.json(err);
+          } else {
+            response.json(dbResult.rows);
+          }
       }
     });
   });

@@ -17,6 +17,9 @@ const products = {
   delete: function (id, callback) {
     return pool.query('DELETE FROM products WHERE idProducts = $1', [id], callback);
   },
+  deleteFromMenu: function (id, callback) {
+    return pool.query('DELETE FROM menu WHERE idProducts = $1', [id], callback);
+  },
   update: function (id, products, callback) {
     return pool.query(
       'UPDATE products set name=$1, description=$2, img=$3, price=$4 where idProducts=$5',
